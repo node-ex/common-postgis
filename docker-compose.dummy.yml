@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  postgis-dummy:
+    container_name: ${DOCKER_REPOSITORY_USERNAME}-common-postgis-dummy
+    image: ${DOCKER_REPOSITORY_USERNAME}/common-postgis-dummy:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: docker-entrypoint-custom.sh
+    command: postgres
+    init: true
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+        mode: host
+    networks:
+      - shared
+    volumes:
+      - type: volume
+        source: data
+        target: /var/lib/postgresql/data
+    env_file:
+      - ./.env
+    healthcheck:
+      test: ["CMD", "docker-healthcheck"]
+      interval: 2m
+      timeout: 10s
+      retries: 3
+      start_period: 1m
+    stop_grace_period: 30s
+    restart: always
+
+volumes:
+  data:
+    name: ${DOCKER_REPOSITORY_USERNAME}-common-postgis-dummy-data
+
+networks:
+  shared:
+    name: ${DOCKER_NETWORK}
