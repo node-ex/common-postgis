@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -Eeu
+set -eu
+set -E
+# set -x
+# set -o pipefail
 
 # Pull changes for the submodule's branch.
 git pull

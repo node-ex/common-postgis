@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-set -Eeu
+set -eu
+set -E
 # set -x
+# set -o pipefail
 
 docker-compose \
   --file docker-compose.dummy.yml \
