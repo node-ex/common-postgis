@@ -4,11 +4,12 @@ set -eu
 # set -x
 set -o pipefail
 
-ls -la /var/lib/postgresql/data
-
 if [ "$*" = 'postgres' ]; then
+    docker-entrypoint-parallel.sh &
+
+    echo '>>> Start PostgreSQL.'
     docker-entrypoint.sh postgres -c 'config_file=/etc/postgresql/postgresql.conf'
-    # update-postgis.sh
+    echo '>>> Done.'
 else
     exec "$@"
 fi
