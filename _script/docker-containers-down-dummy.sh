@@ -4,17 +4,14 @@ set -E
 # set -x
 # set -o pipefail
 
+# Load environment variables from .env .
+$(sed 's/^/export /g' .env)
+
+echo ">>> Container down: ${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy ."
 docker-compose \
   --file docker-compose.dummy.yml \
   down \
-    --timeout 0
+    --timeout 0 || true
 
-# Remove dummy Docker volumes.
-bash -c "$(
-cat <<'EOF'
-
-$(sed 's/^/export /g' .env)
+echo '>>> Remove Docker volumes, if there are any.'
 docker volume rm $(docker volume ls --quiet | grep --regexp "${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy-.*") 2> /dev/null
-
-EOF
-)"

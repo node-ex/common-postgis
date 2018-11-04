@@ -6,5 +6,6 @@ set -E
 
 ./_script/submodule-commit.sh
 
+echo '>>> Pull and push the submodule.'
 git pull
 git push

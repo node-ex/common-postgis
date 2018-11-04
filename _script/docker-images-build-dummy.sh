@@ -4,10 +4,13 @@ set -E
 # set -x
 # set -o pipefail
 
-# Create .env file.
+# Create .env file, if it does not exist.
 ./_script/env-create-dummy.sh
 
-# Build Docker container.
+# Load environment variables from .env .
+$(sed 's/^/export /g' .env)
+
+echo ">>> Build image: ${DOCKER_REPOSITORY_USERNAME}/${DOCKER_REPOSITORY_NAME}-dummy:latest."
 docker-compose \
   --file docker-compose.dummy.yml \
   build \
