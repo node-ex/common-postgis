@@ -7,6 +7,6 @@ set -E
 # .env file
 
 if [ ! -f '.env' ]; then
-  echo '>>> Create .env file from .env.template .'
-  cp -a '.env.template' '.env'
+  echo '>>> Create .env file from .env.*.template .'
+  cp -a '.env.dummy.template' '.env'
 fi

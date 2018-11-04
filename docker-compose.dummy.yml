@@ -2,8 +2,8 @@ version: "3.7"
 
 services:
   postgis-dummy:
-    container_name: ${DOCKER_REPOSITORY_USERNAME}-common-postgis-dummy
-    image: ${DOCKER_REPOSITORY_USERNAME}/common-postgis-dummy:latest
+    container_name: ${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy
+    image: ${DOCKER_REPOSITORY_USERNAME}/${DOCKER_REPOSITORY_NAME}-dummy:latest
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -34,7 +34,7 @@ services:
 
 volumes:
   data:
-    name: ${DOCKER_REPOSITORY_USERNAME}-common-postgis-dummy-data
+    name: ${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy-data
 
 networks:
   shared:
