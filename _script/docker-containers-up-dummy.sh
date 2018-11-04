@@ -15,7 +15,7 @@ if [ "`docker image inspect ${DOCKER_REPOSITORY_USERNAME}/${DOCKER_REPOSITORY_NA
   ./_script/docker-images-build-dummy.sh
 fi
 
-echo '>>> Container up.'
+echo ">>> Container up: ${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy ."
 docker-compose \
   --file docker-compose.dummy.yml \
   up \

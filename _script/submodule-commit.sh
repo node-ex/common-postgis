@@ -30,7 +30,7 @@ if [ "${submodule_declared_branch}" != "${submodule_actual_branch}" ]; then
     exit 0
 fi
 
-echo '>>> Stage and commit superproject'
+echo '>>> Stage and commit superproject.'
 cd ..
 git stash || true
 git add "${submodule_name}"
