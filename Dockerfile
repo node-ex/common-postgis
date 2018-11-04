@@ -21,6 +21,5 @@ COPY ./entrypoint/docker-entrypoint-parallel.sh /usr/local/bin/
 RUN chmod a+rx /usr/local/bin/docker-entrypoint-parallel.sh
 
 # Copy and setup other executables/scripts.
-
 COPY ./bin/wait-for-it.sh /usr/local/bin/
 RUN chmod a+rx /usr/local/bin/wait-for-it.sh

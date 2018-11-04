@@ -14,4 +14,4 @@ docker-compose \
     --timeout 0 || true
 
 echo '>>> Remove Docker volumes, if there are any.'
-docker volume rm $(docker volume ls --quiet | grep --regexp "${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy-.*") 2> /dev/null
+docker volume rm $(docker volume ls --quiet | grep --regexp "${DOCKER_REPOSITORY_USERNAME}-${DOCKER_REPOSITORY_NAME}-dummy-.*") 2> /dev/null || true
